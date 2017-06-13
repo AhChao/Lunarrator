@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "LunarDay.h"
 
 @interface ViewController ()
 
@@ -18,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    LunarDay *day0524 = [[LunarDay alloc] initWithJSON :@"2017/2017_5_24"];
 }
 
 

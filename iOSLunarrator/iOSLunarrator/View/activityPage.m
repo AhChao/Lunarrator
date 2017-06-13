@@ -9,6 +9,7 @@
 #import "activityPage.h"
 
 @interface activityPage ()
+@property (weak, nonatomic) IBOutlet UITextView *activityContent;
 
 @end
 
@@ -22,6 +23,20 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)startTimeSelect:(id)sender {
+    UIDatePicker *datePicker;
+    NSDate *date = datePicker.date;
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"YYYY/MM/dd"];
+    [sender setTitle: [df stringFromDate:date]];
+}
+- (IBAction)endTimeSelect:(id)sender {
+    UIDatePicker *datePicker;
+    NSDate *date = datePicker.date;
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"YYYY/MM/dd"];
+    [sender setTitle: [df stringFromDate:date]];
 }
 
 /*

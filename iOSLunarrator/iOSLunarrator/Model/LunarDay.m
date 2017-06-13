@@ -38,7 +38,6 @@
     _nml_Sz_Year=_calendarDic[@"nml_Sz_Year"];
     _nml_Sz_Month=_calendarDic[@"nml_Sz_Month"];
     _nml_Sz_Hour=_calendarDic[@"nml_Sz_Hour"];
-    NSLog(@"今日農民曆上的宜為-------------%@",_nml_Y);
     return self;
 }
 

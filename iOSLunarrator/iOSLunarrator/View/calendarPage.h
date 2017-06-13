@@ -10,8 +10,8 @@
 #import "FSCalendar.h"
 
 @interface calendarPage : UIViewController
-@property (strong, nonatomic) NSCalendar *chineseCalendar;
-@property (strong, nonatomic) NSArray<NSString *> *lunarChars;
-@property (weak, nonatomic) IBOutlet FSCalendar *lunarCalendar;
+
+@property (weak, nonatomic) IBOutlet FSCalendar *calendar;
+
 
 @end

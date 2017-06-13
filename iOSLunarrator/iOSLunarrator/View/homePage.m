@@ -21,9 +21,7 @@
 }
 - (IBAction)clickAnywhere:(id)sender {
     calendarPage *calendarpage = [[calendarPage alloc] initWithNibName:@"calendarPage" bundle:nil];
-    NSLog(@"here1");
     [self presentModalViewController:calendarpage animated:YES];
-    NSLog(@"here2");
 }
 
 

@@ -7,9 +7,15 @@
 //
 
 #import "calendarPage.h"
+#import <NotificationCenter/NotificationCenter.h>
 #import "FSCalendar.h"
+#import "LunarDay.h"
 
 @interface calendarPage ()
+@property (strong, nonatomic) NSCalendar *gregorian;
+@property (strong, nonatomic) NSCalendar *lunarCalendar;
+@property (strong, nonatomic) NSArray<NSString *> *lunarChars;
+@property (weak, nonatomic) IBOutlet UILabel *todayTitle;
 
 @end
 
@@ -18,12 +24,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.chineseCalendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierChinese];
-    NSInteger lunarDay = [self.chineseCalendar component:NSCalendarUnitDay fromDate:[NSDate date]];
 
-    self.lunarChars = @[@"初一",@"初二",@"初三",@"初四",@"初五",@"初六",@"初七",@"初八",@"初九",@"初十",@"十一",@"十二",@"十三",@"十四",@"十五",@"十六",@"十七",@"十八",@"十九",@"二十",@"二一",@"二二",@"二三",@"二四",@"二五",@"二六",@"二七",@"二八",@"二九",@"三十"];
-    NSString *lunarDayString = self.lunarChars[lunarDay-1];
+    //_calendar.scrollDirection = FSCalendarScrollDirectionVertical;//垂直拉動
+    //_calendar.appearance.borderRadius = 0;//方形選擇匡
+    
+    //更動上面那行的日期
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY / MM / dd"];
+    NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+    [formatter setDateFormat:@"YYYY/YYYY_M_dd"];
+    NSString *findToday = [formatter stringFromDate:[NSDate date]];
+    LunarDay *Lday = [[LunarDay alloc] initWithJSON :findToday];
+    NSLog(@"今日宜 %@ \n不宜 %@",[[Lday nml_Y] substringToIndex:5],[[Lday nml_J] substringToIndex:5]);
+    _todayTitle.text = stringFromDate;
+    [_calendar reloadData];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
