@@ -7,8 +7,9 @@
 //
 
 #import "homePage.h"
-
+#import "calendarPage.h"
 @interface homePage ()
+@property (weak, nonatomic) IBOutlet UIButton *anywhere;
 
 @end
 
@@ -18,12 +19,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (IBAction)clickAnywhere:(id)sender {
+    calendarPage *calendarpage = [[calendarPage alloc] initWithNibName:@"calendarPage" bundle:nil];
+    NSLog(@"here1");
+    [self presentModalViewController:calendarpage animated:YES];
+    NSLog(@"here2");
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 

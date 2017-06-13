@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "homePage.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    homePage* homepage = [[homePage alloc] initWithNibName:@"homePage" bundle:nil];
+    [self.window setRootViewController:homepage];
     return YES;
 }
 
