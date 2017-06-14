@@ -10,13 +10,14 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "FSCalendar.h"
 #import "LunarDay.h"
+#import "CustomerCalendar.h"
 
 @interface calendarPage ()
 @property (strong, nonatomic) NSCalendar *gregorian;
 @property (strong, nonatomic) NSCalendar *lunarCalendar;
 @property (strong, nonatomic) NSArray<NSString *> *lunarChars;
 @property (weak, nonatomic) IBOutlet UILabel *todayTitle;
-
+@property (strong, nonatomic) CustomerCalendar* calenderDataSource;
 @end
 
 @implementation calendarPage
@@ -28,6 +29,8 @@
     //_calendar.scrollDirection = FSCalendarScrollDirectionVertical;//垂直拉動
     //_calendar.appearance.borderRadius = 0;//方形選擇匡
     
+    
+    _calenderDataSource = [CustomerCalendar new];//[[CustomerCalendar alloc] init]
     //更動上面那行的日期
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY / MM / dd"];
@@ -37,6 +40,7 @@
     LunarDay *Lday = [[LunarDay alloc] initWithJSON :findToday];
     NSLog(@"今日宜 %@ \n不宜 %@",[[Lday nml_Y] substringToIndex:5],[[Lday nml_J] substringToIndex:5]);
     _todayTitle.text = stringFromDate;
+    _calendar.dataSource = _calenderDataSource;
     [_calendar reloadData];
 }
 

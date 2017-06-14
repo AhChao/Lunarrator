@@ -43,6 +43,7 @@
 		C2FE58EC1EF00B500063A62C /* FSCalendarTransitionCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE58DA1EF00B500063A62C /* FSCalendarTransitionCoordinator.m */; };
 		C2FE58ED1EF00B500063A62C /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE58DC1EF00B500063A62C /* FSCalendarWeekdayView.m */; };
 		C2FE58EE1EF00B500063A62C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2FE58DD1EF00B500063A62C /* Info.plist */; };
+		C2FE59241EF0F28A0063A62C /* CustomerCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE59231EF0F28A0063A62C /* CustomerCalendar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,8 @@
 		C2FE58DB1EF00B500063A62C /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		C2FE58DC1EF00B500063A62C /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		C2FE58DD1EF00B500063A62C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2FE59221EF0F28A0063A62C /* CustomerCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerCalendar.h; path = Model/CustomerCalendar.h; sourceTree = "<group>"; };
+		C2FE59231EF0F28A0063A62C /* CustomerCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerCalendar.m; path = Model/CustomerCalendar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +235,8 @@
 				C2FE52ED1EEE8E560063A62C /* LunarDay.m */,
 				C2FE52EF1EEE8E6C0063A62C /* Activity.h */,
 				C2FE52F01EEE8E6C0063A62C /* Activity.m */,
+				C2FE59221EF0F28A0063A62C /* CustomerCalendar.h */,
+				C2FE59231EF0F28A0063A62C /* CustomerCalendar.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				C2FE58DE1EF00B500063A62C /* FSCalendar+Deprecated.m in Sources */,
 				C2FE58EB1EF00B500063A62C /* FSCalendarStickyHeader.m in Sources */,
 				C2FE58DF1EF00B500063A62C /* FSCalendar.m in Sources */,
+				C2FE59241EF0F28A0063A62C /* CustomerCalendar.m in Sources */,
 				C2FE58E91EF00B500063A62C /* FSCalendarHeaderView.m in Sources */,
 				C2FE58EC1EF00B500063A62C /* FSCalendarTransitionCoordinator.m in Sources */,
 				C206EA081EE1676100E4E366 /* ViewController.m in Sources */,
