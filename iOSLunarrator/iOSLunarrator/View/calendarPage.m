@@ -9,8 +9,8 @@
 #import "calendarPage.h"
 #import <NotificationCenter/NotificationCenter.h>
 #import "FSCalendar.h"
-#import "LunarDay.h"
 #import "CustomerCalendar.h"
+#import "LunarDay.h"
 
 @interface calendarPage ()
 @property (strong, nonatomic) NSCalendar *gregorian;
@@ -18,9 +18,24 @@
 @property (strong, nonatomic) NSArray<NSString *> *lunarChars;
 @property (weak, nonatomic) IBOutlet UILabel *todayTitle;
 @property (strong, nonatomic) CustomerCalendar* calenderDataSource;
+@property (weak, nonatomic) IBOutlet UILabel *yLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jLabel;
+@property (weak, nonatomic) IBOutlet UIButton *singleDayBut;
+@property (weak, nonatomic) IBOutlet UIButton *activityPageBut;
+@property (weak, nonatomic) IBOutlet UIButton *goodDayBut;
 @end
 
 @implementation calendarPage
+
+- (void)setButBorder:(UIButton*) btn{
+    //btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //btn.frame = CGRectMake(0,0,50,50); // x,y自行設定
+    //btn.layer.backgroundColor = [UIColor redColor].CGColor;
+    btn.layer.borderWidth = 1.0f; //設定邊線寬度
+    btn.layer.borderColor = [UIColor whiteColor].CGColor; //設定邊線顏色
+    btn.layer.masksToBounds = YES;  //這行要有才能顯示出來
+    btn.layer.cornerRadius = 15.0f;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,27 +50,38 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY / MM / dd"];
     NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
-    [formatter setDateFormat:@"YYYY/YYYY_M_dd"];
-    NSString *findToday = [formatter stringFromDate:[NSDate date]];
-    LunarDay *Lday = [[LunarDay alloc] initWithJSON :findToday];
-    NSLog(@"今日宜 %@ \n不宜 %@",[[Lday nml_Y] substringToIndex:5],[[Lday nml_J] substringToIndex:5]);
+
     _todayTitle.text = stringFromDate;
     _calendar.dataSource = _calenderDataSource;
+    _calendar.delegate = self;
+    
+    [self setButBorder:_singleDayBut];
+    [self setButBorder:_activityPageBut];
+    [self setButBorder:_goodDayBut];
+    
     [_calendar reloadData];
 }
-
+- (IBAction)goToActivityPage:(id)sender {
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-- (NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
+
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
-    NSInteger day = [_lunarCalendar component:NSCalendarUnitDay fromDate:date];
-    return _lunarChars[day-1]; // 初一、初二、初三...
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY/YYYY_M_d"];
+    NSString *findToday = [formatter stringFromDate:date];
+    LunarDay *Lday = [[LunarDay alloc] initWithJSON :findToday];
+    NSString *returnString=@"宜 / ";
+    returnString = [returnString stringByAppendingString:[[Lday nml_Y] substringToIndex:MIN(5, Lday.nml_Y.length)]];
+    _yLabel.text = returnString;
+    returnString = @"忌 / ";
+    returnString = [returnString stringByAppendingString:[[Lday nml_J] substringToIndex:MIN(5, Lday.nml_J.length)]];
+    _jLabel.text = returnString;
 }
-*/
 
 /*
 #pragma mark - Navigation
@@ -68,3 +94,5 @@
 */
 
 @end
+
+

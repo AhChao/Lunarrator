@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "FSCalendar.h"
 
-@interface calendarPage : UIViewController
+@interface calendarPage : UIViewController <FSCalendarDelegate>
 
 @property (weak, nonatomic) IBOutlet FSCalendar *calendar;
 
+- (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 
 @end

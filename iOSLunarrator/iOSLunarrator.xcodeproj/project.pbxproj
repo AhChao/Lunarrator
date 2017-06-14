@@ -17,6 +17,7 @@
 		C206EA261EE1676100E4E366 /* iOSLunarratorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C206EA251EE1676100E4E366 /* iOSLunarratorUITests.m */; };
 		C206EA381EE5013E00E4E366 /* homePage.m in Sources */ = {isa = PBXBuildFile; fileRef = C206EA361EE5013E00E4E366 /* homePage.m */; };
 		C206EA391EE5013E00E4E366 /* homePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = C206EA371EE5013E00E4E366 /* homePage.xib */; };
+		C2D70AA81EF14D3200B1A42B /* ActivityPool.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D70AA71EF14D3200B1A42B /* ActivityPool.m */; };
 		C2FE52EA1EE55B4D0063A62C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE52E81EE55B4D0063A62C /* TestViewController.m */; };
 		C2FE52EB1EE55B4D0063A62C /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FE52E91EE55B4D0063A62C /* TestViewController.xib */; };
 		C2FE52EE1EEE8E560063A62C /* LunarDay.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE52ED1EEE8E560063A62C /* LunarDay.m */; };
@@ -83,6 +84,8 @@
 		C206EA351EE5013E00E4E366 /* homePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = homePage.h; path = View/homePage.h; sourceTree = "<group>"; };
 		C206EA361EE5013E00E4E366 /* homePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = homePage.m; path = View/homePage.m; sourceTree = "<group>"; };
 		C206EA371EE5013E00E4E366 /* homePage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = homePage.xib; path = View/homePage.xib; sourceTree = "<group>"; };
+		C2D70AA61EF14D3200B1A42B /* ActivityPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityPool.h; path = Model/ActivityPool.h; sourceTree = "<group>"; };
+		C2D70AA71EF14D3200B1A42B /* ActivityPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityPool.m; path = Model/ActivityPool.m; sourceTree = "<group>"; };
 		C2FE52E71EE55B4D0063A62C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		C2FE52E81EE55B4D0063A62C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		C2FE52E91EE55B4D0063A62C /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 				C2FE52F01EEE8E6C0063A62C /* Activity.m */,
 				C2FE59221EF0F28A0063A62C /* CustomerCalendar.h */,
 				C2FE59231EF0F28A0063A62C /* CustomerCalendar.m */,
+				C2D70AA61EF14D3200B1A42B /* ActivityPool.h */,
+				C2D70AA71EF14D3200B1A42B /* ActivityPool.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				C2FE58E31EF00B500063A62C /* FSCalendarCollectionView.m in Sources */,
 				C2FE58E11EF00B500063A62C /* FSCalendarCalculator.m in Sources */,
 				C2FE58E21EF00B500063A62C /* FSCalendarCell.m in Sources */,
+				C2D70AA81EF14D3200B1A42B /* ActivityPool.m in Sources */,
 				C206EA021EE1676100E4E366 /* main.m in Sources */,
 				C206EA381EE5013E00E4E366 /* homePage.m in Sources */,
 				C2FE52EA1EE55B4D0063A62C /* TestViewController.m in Sources */,

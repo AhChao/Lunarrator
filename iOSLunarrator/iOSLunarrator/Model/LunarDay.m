@@ -18,6 +18,7 @@
     NSString *pathForResource=[NSString stringWithFormat:@"Resource/LunarCalendar/%@",DateInput];
     NSString *filePath = [[NSBundle mainBundle] pathForResource:pathForResource ofType:@"json"];
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+   
     _calendarDic = [NSJSONSerialization JSONObjectWithData:fileData options:kNilOptions error:nil];
     _nml_Y=_calendarDic[@"nml_Y"];
     NSArray *items = [_nml_Y componentsSeparatedByString:@"<"];
