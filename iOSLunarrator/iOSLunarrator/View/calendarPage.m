@@ -68,6 +68,7 @@
     {
         activitypage = [[activityPage alloc] initWithNibName:@"activityPage" bundle:nil];
     }
+    //[self dismissViewControllerAnimated:YES completion:nil];
     self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController: activitypage animated:YES completion:nil];
     

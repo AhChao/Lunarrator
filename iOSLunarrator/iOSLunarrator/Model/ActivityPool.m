@@ -9,8 +9,8 @@
 #import "ActivityPool.h"
 
 @interface ActivityPool()
-@property (nonatomic,retain) NSMutableArray *activityArray;
-
+@property (strong,nonatomic) NSMutableArray *activityArray;
+@property (strong,nonatomic) NSMutableArray *targetActivities;
 @end
 
 @implementation ActivityPool
@@ -27,6 +27,11 @@
 //ActivityPool *ap = [ActivityPool sharedInstance];
 
 
+- (instancetype)init {
+    _activityArray = [NSMutableArray new];
+    _targetActivities = [NSMutableArray new];
+    return self;
+}
 - (void) saveActivity : (Activity*) inputActivity
 {
     [_activityArray addObject:inputActivity];
@@ -36,26 +41,59 @@
 
 - (NSMutableArray*) activityOfDate : (NSDate*) targetDate
 {
-    NSMutableArray* targetActivities;
+    [_targetActivities removeAllObjects];
     for(Activity* act in _activityArray)
     {
         if ([targetDate compare:act.startTime] == NSOrderedDescending && [targetDate compare:act.endTime] == NSOrderedAscending) {
-            //目標時間在開始時間與結束時間的區間中
-            [targetActivities addObject:act];
+            //目標時間在活動開始時間與結束時間的區間中
+            [_targetActivities addObject:act];
         }
         else if([targetDate compare:act.startTime] == NSOrderedSame||[targetDate compare:act.endTime]==NSOrderedSame)
         {
-            //目標時間與開始或結束時間相等
-            [targetActivities addObject:act];
+            //目標時間與活動開始或結束時間相等
+            [_targetActivities addObject:act];
+        }
+        else if([targetDate compare:act.startTime] == NSOrderedDescending&&[act.startTime compare:act.endTime]==NSOrderedSame)
+        {
+            //目標時間在活動開始時間後 且活動開始時間與結束時間相等
+            [_targetActivities addObject:act];
         }
     }
     
-    return targetActivities;
+    return _targetActivities;
+}
+
+- (NSMutableArray*) activityBeforeDate : (NSDate*) targetDate
+{
+
+    [_targetActivities removeAllObjects];
+    for(Activity* act in _activityArray)
+    {
+        if ([targetDate compare:act.endTime] == NSOrderedDescending) {
+            //目標時間在活動結束時間後
+            [_targetActivities addObject:act];
+        }
+    }
+    
+    return _targetActivities;
+}
+
+- (NSMutableArray*) activityAfterDate : (NSDate*) targetDate
+{
+    [_targetActivities removeAllObjects];
+    for(Activity* act in _activityArray)
+    {
+        if ([targetDate compare:act.startTime] == NSOrderedAscending) {
+            //目標時間在活動開始時間前
+            [_targetActivities addObject:act];
+        }
+    }
+    return _targetActivities;
 }
 
 - (NSMutableArray*) activityBetweenDates : (NSDate*) startDate Second:(NSDate*)endDate
 {
-    NSMutableArray* targetActivities;
+    [_targetActivities removeAllObjects];
     
     //例如區間為16~19號，則應該回傳的活動有
     //1. 16號前開始的活動，但在16號後結束
@@ -68,7 +106,7 @@
             if([act.endTime compare:startDate] == NSOrderedDescending)
             {
                 //活動的結束時間比區段開始時間晚
-                [targetActivities addObject:act];
+                [_targetActivities addObject:act];
                 continue;
             }
         }
@@ -76,15 +114,15 @@
         if ([act.startTime compare:endDate] == NSOrderedAscending ||[act.startTime compare:endDate] == NSOrderedSame)
         {
             //活動的開始時間比區段結束時間早或相等
-            if([act.endTime compare:endDate] == NSOrderedDescending)
-            {
-                //活動的結束時間比區段結束時間晚
-                [targetActivities addObject:act];
+            //if([act.endTime compare:endDate] == NSOrderedDescending)
+            //{
+                //活動的結束時間比區段結束時間晚 XX不正確的條件
+                [_targetActivities addObject:act];
                 continue;
-            }
+            //}
         }
     }
-    return targetActivities;
+    return _targetActivities;
 }
 
 @end

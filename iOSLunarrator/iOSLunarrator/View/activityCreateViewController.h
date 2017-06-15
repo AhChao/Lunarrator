@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface activityCreateViewController : UIViewController
+@interface activityCreateViewController : UIViewController <UITextViewDelegate>
 
 @end

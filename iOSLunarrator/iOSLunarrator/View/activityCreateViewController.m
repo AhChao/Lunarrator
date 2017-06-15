@@ -19,8 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *startDateBut;
 @property (weak, nonatomic) IBOutlet UIButton *endDateBut;
 @property (weak, nonatomic) IBOutlet UITextField *activityTitle;
-@property (weak, nonatomic) NSDate *pickedStartDate;
-@property (weak, nonatomic) NSDate *pickedEndDate;
+@property (strong, nonatomic) NSDate *pickedStartDate;
+@property (strong, nonatomic) NSDate *pickedEndDate;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
+@property (weak, nonatomic) IBOutlet UILabel *warningLabel;
 
 @end
 
@@ -35,6 +37,7 @@
     _contentView.layer.cornerRadius = 15.0f;
     _contentView.delegate = self;
     [self setButBorder:_createBut];
+    [self setButBorder:_cancelBtn];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,11 +52,16 @@
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [alert.view addSubview:datePicker];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        [dateFormat setDateFormat:@"yyyy / M / d"];
         NSString *dateString = [dateFormat stringFromDate:datePicker.date];
         _pickedStartDate = datePicker.date;
+        unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents* components = [calendar components:flags fromDate:_pickedStartDate];
+        NSDate* dateOnly = [calendar dateFromComponents:components];
+        _pickedStartDate = dateOnly;
         [_startDateBut setTitle:dateString forState:UIControlStateNormal];
     }];
     
@@ -74,9 +82,14 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"確定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy/ M/ d"];
+        [dateFormat setDateFormat:@"yyyy / M / d"];
         NSString *dateString = [dateFormat stringFromDate:datePicker.date];
         _pickedEndDate = datePicker.date;
+        unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+        NSCalendar* calendar = [NSCalendar currentCalendar];
+        NSDateComponents* components = [calendar components:flags fromDate:_pickedEndDate];
+        NSDate* dateOnly = [calendar dateFromComponents:components];
+        _pickedEndDate = dateOnly;
         [_endDateBut setTitle:dateString forState:UIControlStateNormal];
     }];
     
@@ -115,23 +128,44 @@
     }
     [textView resignFirstResponder];
 }
+
+//建立鈕按下後
 - (IBAction)activityCreateClicked:(id)sender {
-    Activity *newActivity= [[Activity alloc] init];
-    ActivityPool *pool = [ActivityPool sharedInstance];
-    newActivity.title = _activityTitle.text;
-    newActivity.startTime = _pickedStartDate;
-    newActivity.endTime = _pickedEndDate;
-    newActivity.content = _contentView.text;
+    if([_pickedEndDate compare:_pickedStartDate] != NSOrderedAscending)
+    {
+        Activity *newActivity= [[Activity alloc] init];
+        ActivityPool *pool = [ActivityPool sharedInstance];
+        newActivity.title = _activityTitle.text;
+        newActivity.startTime = _pickedStartDate;
+        newActivity.endTime = _pickedEndDate;
+        newActivity.content = _contentView.text;
     
-    [pool saveActivity:newActivity];
-    //save finish
+        [pool saveActivity:newActivity];
+        //save finish
+        activityPage* activitypage;
+        if (activitypage == nil)
+        {
+            activitypage = [[activityPage alloc] initWithNibName:@"activityPage" bundle:nil];
+        }
+    
+        [self dismissViewControllerAnimated:YES completion:nil];
+        //self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        //[self presentViewController: activitypage animated:YES completion:nil];
+    }
+    else
+    {
+        _warningLabel.text=@"您的結束日期早於開始日期！請重新輸入";
+    }
+    
+}
+- (IBAction)cancelBtnClicked:(id)sender {
     activityPage* activitypage;
     if (activitypage == nil)
     {
         activitypage = [[activityPage alloc] initWithNibName:@"activityPage" bundle:nil];
     }
-    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController: activitypage animated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

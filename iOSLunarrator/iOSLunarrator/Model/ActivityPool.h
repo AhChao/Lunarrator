@@ -15,7 +15,9 @@
 
 - (void) saveActivity : (Activity*) inputActivity;
 
-- (Activity*) activityOfDate : (NSDate*) targetDate;
+- (NSMutableArray*) activityOfDate : (NSDate*) targetDate;
+- (NSMutableArray*) activityAfterDate : (NSDate*) targetDate;
+- (NSMutableArray*) activityBeforeDate : (NSDate*) targetDate;
 
 - (NSMutableArray*) activityBetweenDates : (NSDate*) startDate Second:(NSDate*)endDate;
 
