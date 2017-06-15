@@ -20,6 +20,7 @@
 		C2D70AA81EF14D3200B1A42B /* ActivityPool.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D70AA71EF14D3200B1A42B /* ActivityPool.m */; };
 		C2D70AAC1EF254C500B1A42B /* activityCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D70AAA1EF254C500B1A42B /* activityCreateViewController.m */; };
 		C2D70AAD1EF254C500B1A42B /* activityCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D70AAB1EF254C500B1A42B /* activityCreateViewController.xib */; };
+		C2D70AB01EF276D000B1A42B /* CustomerUI.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D70AAF1EF276D000B1A42B /* CustomerUI.m */; };
 		C2FE52EA1EE55B4D0063A62C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE52E81EE55B4D0063A62C /* TestViewController.m */; };
 		C2FE52EB1EE55B4D0063A62C /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FE52E91EE55B4D0063A62C /* TestViewController.xib */; };
 		C2FE52EE1EEE8E560063A62C /* LunarDay.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE52ED1EEE8E560063A62C /* LunarDay.m */; };
@@ -91,6 +92,8 @@
 		C2D70AA91EF254C500B1A42B /* activityCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = activityCreateViewController.h; path = View/activityCreateViewController.h; sourceTree = "<group>"; };
 		C2D70AAA1EF254C500B1A42B /* activityCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = activityCreateViewController.m; path = View/activityCreateViewController.m; sourceTree = "<group>"; };
 		C2D70AAB1EF254C500B1A42B /* activityCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = activityCreateViewController.xib; path = View/activityCreateViewController.xib; sourceTree = "<group>"; };
+		C2D70AAE1EF276D000B1A42B /* CustomerUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomerUI.h; path = Model/CustomerUI.h; sourceTree = "<group>"; };
+		C2D70AAF1EF276D000B1A42B /* CustomerUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomerUI.m; path = Model/CustomerUI.m; sourceTree = "<group>"; };
 		C2FE52E71EE55B4D0063A62C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		C2FE52E81EE55B4D0063A62C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		C2FE52E91EE55B4D0063A62C /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				C2FE59231EF0F28A0063A62C /* CustomerCalendar.m */,
 				C2D70AA61EF14D3200B1A42B /* ActivityPool.h */,
 				C2D70AA71EF14D3200B1A42B /* ActivityPool.m */,
+				C2D70AAE1EF276D000B1A42B /* CustomerUI.h */,
+				C2D70AAF1EF276D000B1A42B /* CustomerUI.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				C2D70AAC1EF254C500B1A42B /* activityCreateViewController.m in Sources */,
 				C206EA021EE1676100E4E366 /* main.m in Sources */,
 				C206EA381EE5013E00E4E366 /* homePage.m in Sources */,
+				C2D70AB01EF276D000B1A42B /* CustomerUI.m in Sources */,
 				C2FE52EA1EE55B4D0063A62C /* TestViewController.m in Sources */,
 				C2FE52F11EEE8E6C0063A62C /* Activity.m in Sources */,
 				C2FE58E71EF00B500063A62C /* FSCalendarDelegationProxy.m in Sources */,
