@@ -125,4 +125,18 @@
     return _targetActivities;
 }
 
+- (Activity*) contentOfActivity : (NSString*) activityTitle
+{
+    Activity *targetActivity = [Activity new];
+    for(Activity* act in _activityArray)
+    {
+        if([act.title isEqualToString:activityTitle])
+        {
+            targetActivity = act;
+            break;
+        }
+    }
+    return targetActivity;
+}
+
 @end

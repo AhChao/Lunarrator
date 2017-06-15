@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface activityPage : UIViewController <UITableViewDataSource,UITabBarDelegate>
+@interface activityPage : UIViewController <UITableViewDataSource,UITabBarDelegate,UITableViewDelegate>
 
 
 

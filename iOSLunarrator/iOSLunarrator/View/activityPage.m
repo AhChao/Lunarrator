@@ -21,6 +21,10 @@
 @property (strong, nonatomic) NSMutableArray *activitiesArray;
 @property (strong, nonatomic) NSMutableArray *finishArray;
 @property (weak, nonatomic) IBOutlet UIButton *backBut;
+@property (weak, nonatomic) UITableViewCell *lastCell;
+@property (weak, nonatomic) UITableViewCell *contentCell;
+@property (weak, nonatomic) UITableViewCell *tempCell;
+@property BOOL cellExpand;
 
 @end
 
@@ -37,15 +41,27 @@
     _activityTabBar.delegate = self;
     
     _activityTableView.dataSource = self;
+    _activityTableView.delegate = self;
     _activitiesArray = [[NSMutableArray alloc] init];
     _finishArray = [[NSMutableArray alloc] init];
     [_activityTableView reloadData];
     [self tabIsToday];
+    
+    _cellExpand=false;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"VDA_Trigger");
+    
+    //cell 樣式清除
+    for(NSInteger i=0 ; i< [_activityTableView numberOfRowsInSection:0];i++)
+    {
+        _tempCell =[_activityTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        _tempCell.contentView.backgroundColor = [[UIColor alloc]initWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1];
+        _tempCell.textLabel.textColor = [[UIColor alloc]initWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+    }
+    
     [self setButBorder:_backBut];
     [self setButBorder:_buildActivityBut];
     [_finishArray removeAllObjects];
@@ -54,6 +70,8 @@
     _activityTabBar.selectedItem = _activityTabBar.items[0];
     [self tabIsToday];
     [_activityTableView reloadData];
+    
+    [[_activityTabBar.items objectAtIndex:1] setImage:[UIImage imageNamed:@"today.png"]];
 }
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
@@ -271,6 +289,111 @@
     }
 }
 
+#pragma mark UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if([[_activityTableView cellForRowAtIndexPath:indexPath]isEqual:_contentCell])
+    {
+        [_activityTableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
+    if(![[_activityTableView cellForRowAtIndexPath:indexPath]isEqual:_lastCell]&&_lastCell!=nil)
+    {
+        [_activityTableView deselectRowAtIndexPath:indexPath animated:YES];
+        return;
+    }
+    
+    UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *cellText = selectedCell.textLabel.text;
+    NSArray *items = [cellText componentsSeparatedByString:@" "];
+    cellText=[items objectAtIndex:0];
+    NSLog(@"%@",cellText);
+    ActivityPool *ap = [ActivityPool sharedInstance];
+    cellText = [ap contentOfActivity:cellText].content;
+    NSLog(@"內容為 %@",cellText);
+    
+    
+    if(!_cellExpand)//目前沒有展開的cell
+    {
+        _cellExpand = true;
+        _lastCell=[_activityTableView cellForRowAtIndexPath:indexPath];
+        
+        //先改datesource 再改view
+        NSInteger rowOfTheCell = [indexPath row];
+        rowOfTheCell+=1;
+        [_finishArray insertObject:cellText atIndex:rowOfTheCell];
+        [_activityTableView insertRowsAtIndexPaths:[self indexPathsForExpandRow:indexPath.row] withRowAnimation:UITableViewRowAnimationTop];
+        _contentCell=[_activityTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]];
+        _contentCell.contentView.backgroundColor = [[UIColor alloc]initWithRed:0.0/255.0 green:136.0/255.0 blue:0.0/255.0 alpha:1];
+        _contentCell.textLabel.textColor = [[UIColor alloc]initWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1];
+    }
+    else//目前有展開的cell
+    {
+        if([[_activityTableView cellForRowAtIndexPath:indexPath]isEqual:_lastCell])//點擊的跟上一個cell是一樣的
+        {
+            //cell樣式清除
+            for(NSInteger i=0 ; i< [_activityTableView numberOfRowsInSection:0];i++)
+            {
+                _tempCell =[_activityTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                _tempCell.contentView.backgroundColor = [[UIColor alloc]initWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1];
+                _tempCell.textLabel.textColor = [[UIColor alloc]initWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+            }
+            
+            //關閉內容顯示並取消選取 清除上一個cell的標示
+            NSInteger rowOfTheCell = [[_activityTableView indexPathForCell:_lastCell] row];
+            rowOfTheCell+=1;
+            [_finishArray removeObjectAtIndex:rowOfTheCell];
+            [_activityTableView deleteRowsAtIndexPaths:[self indexPathsForExpandRow:indexPath.row] withRowAnimation:UITableViewRowAnimationTop];
+            
+            _cellExpand = false;
+            [_activityTableView deselectRowAtIndexPath:indexPath animated:YES];
+            _lastCell = nil;
+        }
+        /*
+        else//點擊另一個cell 且本來有cell展開
+        {
+            //取消選取上一個並收起上一個的內容 顯示點擊的這個的內容 把上一個cell的標示指向現在這個
+            int modifyForRow=0;
+            [_activityTableView deselectRowAtIndexPath:[_activityTableView indexPathForCell:_lastCell] animated:YES];
+            NSInteger rowOfTheCell = [[_activityTableView indexPathForCell:_lastCell] row];
+            rowOfTheCell+=1;
+            [_finishArray removeObjectAtIndex:rowOfTheCell];
+            rowOfTheCell-=1;
+            [_activityTableView deleteRowsAtIndexPaths:[self indexPathsForExpandRow:rowOfTheCell] withRowAnimation:UITableViewRowAnimationTop];
+            
+            _lastCell=[_activityTableView cellForRowAtIndexPath:indexPath];
+            
+            for(NSInteger i=0 ; i< [_activityTableView numberOfRowsInSection:0];i++)
+            {
+                _tempCell =[_activityTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+                _tempCell.contentView.backgroundColor = [[UIColor alloc]initWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1];
+                _tempCell.textLabel.textColor = [[UIColor alloc]initWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1];
+            }
+            
+            rowOfTheCell = [indexPath row];
+            //rowOfTheCell+=1;
+            rowOfTheCell += modifyForRow;
+            [_finishArray insertObject:cellText atIndex:rowOfTheCell];
+            rowOfTheCell-=1;
+            [_activityTableView insertRowsAtIndexPaths:[self indexPathsForExpandRow:rowOfTheCell] withRowAnimation:UITableViewRowAnimationTop];
+            _contentCell=[_activityTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]];
+            _contentCell.contentView.backgroundColor = [[UIColor alloc]initWithRed:0.0/255.0 green:136.0/255.0 blue:0.0/255.0 alpha:1];
+            _contentCell.textLabel.textColor = [[UIColor alloc]initWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1];
+            
+            //_lastCell=[_activityTableView cellForRowAtIndexPath:indexPath];
+        }*/
+    }
+}
+
+- (NSArray *)indexPathsForExpandRow:(NSInteger)row {
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    int ExpandCount = 1;//展開長度
+    for (int i = 1; i <= ExpandCount; i++) {
+        NSIndexPath *idxPth = [NSIndexPath indexPathForRow:row + i inSection:0];
+        [indexPaths addObject:idxPth];
+    }
+    return [indexPaths copy];
+}
 
 /*
 #pragma mark - Navigation

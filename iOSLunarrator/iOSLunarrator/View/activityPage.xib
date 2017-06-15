@@ -28,10 +28,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <items>
-                        <tabBarItem title="今日活動" id="j1t-Vj-GDa" userLabel="today"/>
-                        <tabBarItem title="最近活動" id="Osi-cu-uCM"/>
-                        <tabBarItem title="未來活動" id="YMf-X0-P9Q"/>
-                        <tabBarItem title="已結束" id="Vi6-LL-Hvg"/>
+                        <tabBarItem title="今日活動" image="today" id="j1t-Vj-GDa" userLabel="today"/>
+                        <tabBarItem title="最近活動" image="recent" id="Osi-cu-uCM"/>
+                        <tabBarItem title="未來活動" image="future" id="YMf-X0-P9Q"/>
+                        <tabBarItem title="已結束" image="past" id="Vi6-LL-Hvg"/>
                     </items>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -76,4 +76,10 @@
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="future" width="30" height="30"/>
+        <image name="past" width="30" height="30"/>
+        <image name="recent" width="30" height="30"/>
+        <image name="today" width="30" height="30"/>
+    </resources>
 </document>

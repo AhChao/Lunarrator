@@ -18,9 +18,8 @@
 - (NSMutableArray*) activityOfDate : (NSDate*) targetDate;
 - (NSMutableArray*) activityAfterDate : (NSDate*) targetDate;
 - (NSMutableArray*) activityBeforeDate : (NSDate*) targetDate;
-
 - (NSMutableArray*) activityBetweenDates : (NSDate*) startDate Second:(NSDate*)endDate;
-
+- (Activity*) contentOfActivity : (NSString*) activityTitle;
 
 
 @end

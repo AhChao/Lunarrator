@@ -60,6 +60,18 @@
     [self setButBorder:_activityPageBut];
     [self setButBorder:_goodDayBut];
     
+    //以今日做為代表顯示宜忌
+    [formatter setDateFormat:@"YYYY/YYYY_M_d"];
+    NSString *findToday = [formatter stringFromDate:[NSDate date]];
+    LunarDay *Lday = [[LunarDay alloc] initWithJSON :findToday];
+    NSString *returnString=@"宜 / ";
+    returnString = [returnString stringByAppendingString:[[Lday nml_Y] substringToIndex:MIN(5, Lday.nml_Y.length)]];
+    _yLabel.text = returnString;
+    returnString = @"忌 / ";
+    returnString = [returnString stringByAppendingString:[[Lday nml_J] substringToIndex:MIN(5, Lday.nml_J.length)]];
+    _jLabel.text = returnString;
+    
+    
     [_calendar reloadData];
 }
 - (IBAction)goToActivityPage:(id)sender {
