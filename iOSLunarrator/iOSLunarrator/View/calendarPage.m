@@ -11,6 +11,7 @@
 #import "FSCalendar.h"
 #import "CustomerCalendar.h"
 #import "LunarDay.h"
+#import "activityPage.h"
 
 @interface calendarPage ()
 @property (strong, nonatomic) NSCalendar *gregorian;
@@ -62,6 +63,14 @@
     [_calendar reloadData];
 }
 - (IBAction)goToActivityPage:(id)sender {
+    activityPage* activitypage;
+    if (activitypage == nil)
+    {
+        activitypage = [[activityPage alloc] initWithNibName:@"activityPage" bundle:nil];
+    }
+    self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController: activitypage animated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +91,7 @@
     returnString = [returnString stringByAppendingString:[[Lday nml_J] substringToIndex:MIN(5, Lday.nml_J.length)]];
     _jLabel.text = returnString;
 }
+
 
 /*
 #pragma mark - Navigation
