@@ -12,8 +12,13 @@
 @interface ActivityPool : NSObject
 
 + (instancetype) sharedInstance;
+
 - (void) saveActivity : (Activity*) inputActivity;
+
 - (Activity*) activityOfDate : (NSDate*) targetDate;
+
 - (NSMutableArray*) activityBetweenDates : (NSDate*) startDate Second:(NSDate*)endDate;
+
+
 
 @end

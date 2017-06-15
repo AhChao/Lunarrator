@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="activityPage">
             <connections>
                 <outlet property="activityTabBar" destination="3g7-Ak-iDw" id="JPN-ad-Zfc"/>
+                <outlet property="activityTableView" destination="j1i-Y3-AQJ" id="q3s-1D-Ya1"/>
                 <outlet property="buildActivityBut" destination="Qbs-M4-31j" id="V6l-FN-4Yy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

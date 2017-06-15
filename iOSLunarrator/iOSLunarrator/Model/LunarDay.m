@@ -42,6 +42,8 @@
     return self;
 }
 
+// LunarDay *Lday = [[LunarDay alloc] initWithJSON :你的日期 格式長這樣YYYY/YYYY_MM_DD];
+
 
 
 @end

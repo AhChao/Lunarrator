@@ -15,6 +15,7 @@
 @property (weak,nonatomic) CustomerUI *CUI;
 @property (weak, nonatomic) IBOutlet UIButton *buildActivityBut;
 @property (weak, nonatomic) IBOutlet UITabBar *activityTabBar;
+@property (weak, nonatomic) IBOutlet UITableView *activityTableView;
 
 @end
 
