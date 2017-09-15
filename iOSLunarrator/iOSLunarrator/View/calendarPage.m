@@ -12,7 +12,8 @@
 #import "CustomerCalendar.h"
 #import "LunarDay.h"
 #import "activityPage.h"
-
+#import "goodDay.h"
+#import "singleDay.h"
 @interface calendarPage ()
 @property (strong, nonatomic) NSCalendar *gregorian;
 @property (strong, nonatomic) NSCalendar *lunarCalendar;
@@ -24,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *singleDayBut;
 @property (weak, nonatomic) IBOutlet UIButton *activityPageBut;
 @property (weak, nonatomic) IBOutlet UIButton *goodDayBut;
+@property (strong, nonatomic) NSDate *tempDate;
+//NSDate *tempDate;
 @end
 
 @implementation calendarPage
@@ -93,6 +96,7 @@
 
 - (void)calendar:(FSCalendar *)calendar didSelectDate:(NSDate *)date atMonthPosition:(FSCalendarMonthPosition)monthPosition
 {
+    _tempDate=date;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY/YYYY_M_d"];
     NSString *findToday = [formatter stringFromDate:date];
@@ -105,6 +109,21 @@
     _jLabel.text = returnString;
 }
 
+- (IBAction)btnGoodDayClick:(id)sender {
+    goodDay *goodday = [[goodDay alloc] initWithNibName:@"goodDay" bundle:nil];
+    //[self presentModalViewController:goodday animated:YES];
+    [self presentViewController: goodday animated:YES completion:nil];
+
+}
+- (IBAction)btnSingleDayClick:(id)sender {
+    if(_tempDate == nil){
+        _tempDate = [NSDate date];
+    }
+    singleDay *singleday = [[singleDay alloc] initWithNibName:@"singleDay" bundle:nil];
+    singleday.tempDate = _tempDate;
+    //[self presentModalViewController:goodday animated:YES];
+    [self presentViewController: singleday animated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation

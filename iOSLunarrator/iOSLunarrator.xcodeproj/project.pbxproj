@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C201D7CB1EF362080043B503 /* explanation.m in Sources */ = {isa = PBXBuildFile; fileRef = C201D7C61EF362080043B503 /* explanation.m */; };
+		C201D7CC1EF362080043B503 /* explanation.xib in Resources */ = {isa = PBXBuildFile; fileRef = C201D7C71EF362080043B503 /* explanation.xib */; };
+		C201D7CD1EF362080043B503 /* goodDay.m in Sources */ = {isa = PBXBuildFile; fileRef = C201D7C91EF362080043B503 /* goodDay.m */; };
+		C201D7CE1EF362080043B503 /* goodDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C201D7CA1EF362080043B503 /* goodDay.xib */; };
+		C201D7D21EF367870043B503 /* singleDay.m in Sources */ = {isa = PBXBuildFile; fileRef = C201D7D01EF367870043B503 /* singleDay.m */; };
+		C201D7D31EF367870043B503 /* singleDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = C201D7D11EF367870043B503 /* singleDay.xib */; };
 		C206EA021EE1676100E4E366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C206EA011EE1676100E4E366 /* main.m */; };
 		C206EA051EE1676100E4E366 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C206EA041EE1676100E4E366 /* AppDelegate.m */; };
 		C206EA081EE1676100E4E366 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C206EA071EE1676100E4E366 /* ViewController.m */; };
@@ -69,6 +75,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C201D7C51EF362080043B503 /* explanation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = explanation.h; path = View/explanation.h; sourceTree = "<group>"; };
+		C201D7C61EF362080043B503 /* explanation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = explanation.m; path = View/explanation.m; sourceTree = "<group>"; };
+		C201D7C71EF362080043B503 /* explanation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = explanation.xib; path = View/explanation.xib; sourceTree = "<group>"; };
+		C201D7C81EF362080043B503 /* goodDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = goodDay.h; path = View/goodDay.h; sourceTree = "<group>"; };
+		C201D7C91EF362080043B503 /* goodDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = goodDay.m; path = View/goodDay.m; sourceTree = "<group>"; };
+		C201D7CA1EF362080043B503 /* goodDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = goodDay.xib; path = View/goodDay.xib; sourceTree = "<group>"; };
+		C201D7CF1EF367870043B503 /* singleDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = singleDay.h; path = View/singleDay.h; sourceTree = "<group>"; };
+		C201D7D01EF367870043B503 /* singleDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = singleDay.m; path = View/singleDay.m; sourceTree = "<group>"; };
+		C201D7D11EF367870043B503 /* singleDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = singleDay.xib; path = View/singleDay.xib; sourceTree = "<group>"; };
 		C206E9FD1EE1676100E4E366 /* iOSLunarrator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSLunarrator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C206EA011EE1676100E4E366 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C206EA031EE1676100E4E366 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -264,6 +279,12 @@
 		C206EA341EE167C300E4E366 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C201D7C51EF362080043B503 /* explanation.h */,
+				C201D7C61EF362080043B503 /* explanation.m */,
+				C201D7C71EF362080043B503 /* explanation.xib */,
+				C201D7C81EF362080043B503 /* goodDay.h */,
+				C201D7C91EF362080043B503 /* goodDay.m */,
+				C201D7CA1EF362080043B503 /* goodDay.xib */,
 				C206EA351EE5013E00E4E366 /* homePage.h */,
 				C206EA361EE5013E00E4E366 /* homePage.m */,
 				C206EA371EE5013E00E4E366 /* homePage.xib */,
@@ -276,6 +297,9 @@
 				C2D70AA91EF254C500B1A42B /* activityCreateViewController.h */,
 				C2D70AAA1EF254C500B1A42B /* activityCreateViewController.m */,
 				C2D70AAB1EF254C500B1A42B /* activityCreateViewController.xib */,
+				C201D7CF1EF367870043B503 /* singleDay.h */,
+				C201D7D01EF367870043B503 /* singleDay.m */,
+				C201D7D11EF367870043B503 /* singleDay.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -427,8 +451,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C201D7CC1EF362080043B503 /* explanation.xib in Resources */,
 				C2FE58AF1EEEA1500063A62C /* Resource in Resources */,
 				C206EA101EE1676100E4E366 /* LaunchScreen.storyboard in Resources */,
+				C201D7CE1EF362080043B503 /* goodDay.xib in Resources */,
+				C201D7D31EF367870043B503 /* singleDay.xib in Resources */,
 				C2FE58EE1EF00B500063A62C /* Info.plist in Resources */,
 				C2FE52EB1EE55B4D0063A62C /* TestViewController.xib in Resources */,
 				C2FE58B91EEFD8C40063A62C /* activityPage.xib in Resources */,
@@ -472,10 +499,13 @@
 				C2D70AB51EF2B2E800B1A42B /* ActivityPageDataSource.m in Sources */,
 				C2FE58DF1EF00B500063A62C /* FSCalendar.m in Sources */,
 				C2FE59241EF0F28A0063A62C /* CustomerCalendar.m in Sources */,
+				C201D7CD1EF362080043B503 /* goodDay.m in Sources */,
+				C201D7D21EF367870043B503 /* singleDay.m in Sources */,
 				C2FE58E91EF00B500063A62C /* FSCalendarHeaderView.m in Sources */,
 				C2FE58EC1EF00B500063A62C /* FSCalendarTransitionCoordinator.m in Sources */,
 				C206EA081EE1676100E4E366 /* ViewController.m in Sources */,
 				C2FE58ED1EF00B500063A62C /* FSCalendarWeekdayView.m in Sources */,
+				C201D7CB1EF362080043B503 /* explanation.m in Sources */,
 				C2FE58B81EEFD8C40063A62C /* activityPage.m in Sources */,
 				C2FE58E41EF00B500063A62C /* FSCalendarCollectionViewLayout.m in Sources */,
 				C206EA051EE1676100E4E366 /* AppDelegate.m in Sources */,
