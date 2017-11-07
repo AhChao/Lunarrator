@@ -5,14 +5,14 @@
 
 **封面頁面**
 
-<img src="./img/click.png" height="170" width="100">
+<img src="./img/click.png" height="340" width="200"/>
 
 - 點擊以進入程式
 - 封面icon
 
 **月曆頁面**
 
-<img src="./img/calendar.png" height="170" width="100">
+<img src="./img/calendar.png" height="340" width="200"/>
 
 - 月曆
   - 點擊日子進入單日頁面
@@ -25,7 +25,7 @@
 
 **單日頁面**
 
-<img src="./img/singleDay.png" height="170" width="100">
+<img src="./img/singleDay.png" height="340" width="200"/>
 
 - 單日記事
 
@@ -37,11 +37,11 @@
 
 **好日子頁面**
 
-<table style="width:100%">
+<table style="width:100%" border='0'>
 	<tr>
-	<th><img src="./img/goodDay.png" height="170" width="100"/></th>
-    <th><img src="./img/goodDay2.png" height="170" width="100"/></th>
-    <th><img src="./img/goodDay3.png" height="170" width="100"/></th>
+	<th><img src="./img/goodDay.png" height="340" width="200"/></th>
+    <th><img src="./img/goodDay2.png" height="340" width="200"/></th>
+    <th><img src="./img/goodDay3.png" height="340" width="200"/></th>
 	</tr>    
 </table>
 
@@ -58,11 +58,13 @@
 
 **活動頁面**
 
-<figure class="third">
-    <img src="./img/viewActivity1.png" height="170" width="100">
-    <img src="./img/viewActivity2.png" height="170" width="100">
-    <img src="./img/viewActivity3.png" height="170" width="100">
-</figure>
+<table style="width:100%" border='0'>
+	<tr>
+	<th><img src="./img/viewActivity1.png" height="340" width="200"/></th>
+    <th><img src="./img/viewActivity2.png" height="340" width="200"/></th>
+    <th><img src="./img/viewActivity3.png" height="340" width="200"/></th>
+	</tr>    
+</table>
 
 - Tab Bar 切換 目前活動（舉行中） / 最近活動 / 已結束活動（依時間排列）
 
