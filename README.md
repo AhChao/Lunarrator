@@ -1,16 +1,15 @@
 # Lunarrator
 農民曆月曆記事
-目前整體程式進度：０％
-到期日：６／１６
-文件最後更新日：６／２
+[![IMAGE ALT TEXT HERE](/img/cover.png)](https://youtu.be/iHc2mwycYOw)
+(點擊可觀看Demo影片)
 
 **封面頁面**
-
-- 點擊已進入
+![Alt text](/img/click.png)
+- 點擊以進入程式
 - 封面icon
 
 **月曆頁面**
-
+![Alt text](/img/calendar.png)
 - 月曆
   - 點擊日子進入單日頁面
 
@@ -21,7 +20,7 @@
   - 點擊活動按鈕進入瀏覽目前舉行中的活動頁面
 
 **單日頁面**
-
+![Alt text](/img/singleDay.png)
 - 單日記事
 
   - 紀錄單日事項
@@ -31,6 +30,12 @@
   - 顯示今日農民曆的宜與忌
 
 **好日子頁面**
+
+<figure class="goodDay">
+    <img src="./img/goodDay.png">
+    <img src="./img/goodDay2.png">
+    <img src="./img/goodDay3.png">
+</figure>
 
 - 小知識按鈕
 
@@ -45,7 +50,14 @@
 
 **活動頁面**
 
-- ＴＡＢ ＢＡＲ切換 目前活動（舉行中） ／ 最近活動 ／ 已結束活動（依時間排列）
+<figure class="activity">
+    <img src="./img/activity1.png">
+    <img src="./img/activity2.png">
+    <img src="./img/activity3.png">
+    <img src="./img/viewActivity3.png">
+</figure>
+
+- Tab Bar 切換 目前活動（舉行中） / 最近活動 / 已結束活動（依時間排列）
 
 - 建立活動（活動包含 活動名稱 活動期間 活動提醒）
 
